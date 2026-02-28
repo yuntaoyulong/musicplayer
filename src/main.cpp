@@ -17,14 +17,13 @@ int main(int argc, char *argv[]) {
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("playerController", &controller);
 
-    const QUrl url(QStringLiteral("qrc:/MistPlayer/qml/Main.qml"));
     QObject::connect(
         &engine,
         &QQmlApplicationEngine::objectCreationFailed,
         &app,
         []() { QCoreApplication::exit(-1); },
         Qt::QueuedConnection);
-    engine.load(url);
+    engine.loadFromModule("MistPlayer", "Main");
 
     return app.exec();
 }
