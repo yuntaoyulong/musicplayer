@@ -1,8 +1,5 @@
 #include "playercontroller.h"
 
-#include <QFileDialog>
-#include <QFileInfo>
-#include <QStandardPaths>
 
 PlayerController::PlayerController(QObject *parent)
     : QObject(parent)
@@ -48,17 +45,7 @@ QStringList PlayerController::recentItems() const {
 }
 
 void PlayerController::openFiles() {
-    const QStringList files = QFileDialog::getOpenFileNames(
-        nullptr,
-        tr("Open media files"),
-        QStandardPaths::writableLocation(QStandardPaths::HomeLocation),
-        tr("Media files (*.mp3 *.flac *.wav *.ogg *.m4a *.aac *.mp4 *.mkv *.webm *.avi *.mov);;All files (*)"));
-
-    QList<QUrl> urls;
-    for (const auto &file : files) {
-        urls.push_back(QUrl::fromLocalFile(file));
-    }
-    addFiles(urls);
+    emit openFilesRequested();
 }
 
 void PlayerController::addFiles(const QList<QUrl> &urls) {

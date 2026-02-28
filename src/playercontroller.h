@@ -41,6 +41,7 @@ public:
 signals:
     void nowPlayingChanged();
     void recentItemsChanged();
+    void openFilesRequested();
 
 private:
     void setCurrentTrack(int index, bool autoplay = true);

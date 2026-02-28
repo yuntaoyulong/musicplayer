@@ -2,7 +2,6 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import QtQuick.Window
-import Qt.labs.platform
 import QtQuick.Dialogs
 import MistPlayer 1.0
 import "components"
@@ -298,6 +297,22 @@ ApplicationWindow {
                     }
                 }
             }
+        }
+    }
+
+
+    FileDialog {
+        id: fileDialog
+        title: "Open media files"
+        fileMode: FileDialog.OpenFiles
+        nameFilters: ["Media files (*.mp3 *.flac *.wav *.ogg *.m4a *.aac *.mp4 *.mkv *.webm *.avi *.mov)", "All files (*)"]
+        onAccepted: playerController.addFiles(selectedFiles)
+    }
+
+    Connections {
+        target: playerController
+        function onOpenFilesRequested() {
+            fileDialog.open()
         }
     }
 
