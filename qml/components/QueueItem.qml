@@ -5,26 +5,30 @@ import MistPlayer 1.0
 ItemDelegate {
     id: root
 
-    required property string title
-    required property bool isCurrent
+    property string title: ""
+    property bool isCurrent: false
 
-    implicitHeight: 44
-    leftPadding: Theme.spaceM
-    rightPadding: Theme.spaceM
+    leftPadding: (typeof Theme !== "undefined" && Theme.spaceM) ? Theme.spaceM : 18
+    rightPadding: (typeof Theme !== "undefined" && Theme.spaceM) ? Theme.spaceM : 18
 
     background: Rectangle {
-        radius: Theme.radiusPill
-        color: root.hovered || root.isCurrent ? Qt.rgba(1, 1, 1, 0.78) : "transparent"
-        border.width: root.isCurrent ? 1 : 0
-        border.color: Theme.lineCool
+        radius: (typeof Theme !== "undefined" && Theme.radiusPill) ? Theme.radiusPill : 14
+        color: root.isCurrent
+               ? Qt.rgba(1, 1, 1, 0.75)
+               : (root.hovered ? Qt.rgba(1, 1, 1, 0.52) : Qt.rgba(1, 1, 1, 0.20))
+        border.color: (typeof Theme !== "undefined" && Theme.lineCool) ? Theme.lineCool : "#1F2C3844"
+        border.width: 1
 
-        Behavior on color { ColorAnimation { duration: Theme.motionFast } }
+        Behavior on color {
+            ColorAnimation { duration: (typeof Theme !== "undefined" && Theme.motionFast) ? Theme.motionFast : 180 }
+        }
     }
 
     contentItem: Text {
         text: root.title
-        color: Theme.textPrimary
-        elide: Text.ElideMiddle
-        font.pixelSize: Theme.body
+        color: (typeof Theme !== "undefined" && Theme.textPrimary) ? Theme.textPrimary : "#1D252C"
+        elide: Text.ElideRight
+        font.pixelSize: (typeof Theme !== "undefined" && Theme.body) ? Theme.body : 15
+        verticalAlignment: Text.AlignVCenter
     }
 }

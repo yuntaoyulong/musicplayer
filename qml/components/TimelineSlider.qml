@@ -6,6 +6,8 @@ Slider {
     id: slider
 
     property bool userDragging: pressed
+    property color accentTone: (typeof Theme !== "undefined" && Theme.accentSoft) ? Theme.accentSoft : "#8094A6"
+    property color borderTone: (typeof Theme !== "undefined" && Theme.lineCool) ? Theme.lineCool : "#1F2C3844"
 
     from: 0
     to: 1
@@ -13,28 +15,28 @@ Slider {
     background: Rectangle {
         x: slider.leftPadding
         y: slider.topPadding + slider.availableHeight / 2 - height / 2
-        implicitWidth: 200
+        implicitWidth: 220
         width: slider.availableWidth
-        height: 6
-        radius: 3
+        height: 8
+        radius: 4
         color: Qt.rgba(1, 1, 1, 0.48)
 
         Rectangle {
             width: slider.visualPosition * parent.width
             height: parent.height
             radius: parent.radius
-            color: Theme.accentSoft
+            color: slider.accentTone
         }
     }
 
     handle: Rectangle {
         x: slider.leftPadding + slider.visualPosition * (slider.availableWidth - width)
         y: slider.topPadding + slider.availableHeight / 2 - height / 2
-        implicitWidth: 16
-        implicitHeight: 16
-        radius: 8
-        color: Qt.rgba(1, 1, 1, 0.9)
+        implicitWidth: 18
+        implicitHeight: 18
+        radius: 9
+        color: Qt.rgba(1, 1, 1, 0.94)
         border.width: 1
-        border.color: Theme.lineCool
+        border.color: slider.borderTone
     }
 }
