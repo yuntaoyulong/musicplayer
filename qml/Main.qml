@@ -138,7 +138,7 @@ ApplicationWindow {
                                         anchors.centerIn: parent
                                         text: "PLAY"
                                         color: Theme.textSecondary
-                                        letterSpacing: 7
+                                        font.letterSpacing: 7
                                         font.pixelSize: Theme.caption
                                     }
                                 }
