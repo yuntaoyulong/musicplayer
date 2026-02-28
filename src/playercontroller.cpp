@@ -150,6 +150,6 @@ void PlayerController::loadRecent() {
     m_recent = m_settings.value("recent", QStringList{}).toStringList();
 }
 
-void PlayerController::saveRecent() const {
+void PlayerController::saveRecent() {
     m_settings.setValue("recent", m_recent);
 }

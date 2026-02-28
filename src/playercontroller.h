@@ -47,7 +47,7 @@ private:
     void setCurrentTrack(int index, bool autoplay = true);
     void appendToRecent(const QUrl &url);
     void loadRecent();
-    void saveRecent() const;
+    void saveRecent();
 
     PlaylistModel m_playlist;
     QMediaPlayer m_player;
