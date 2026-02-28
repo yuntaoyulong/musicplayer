@@ -284,9 +284,16 @@ ApplicationWindow {
                                 model: playerController.recentItems
                                 delegate: ItemDelegate {
                                     width: ListView.view.width
-                                    text: modelData
-                                    elide: Text.ElideMiddle
                                     onClicked: playerController.playRecent(index)
+
+                                    contentItem: Text {
+                                        text: modelData
+                                        elide: Text.ElideMiddle
+                                        color: Theme.textPrimary
+                                        font.pixelSize: Theme.body
+                                        verticalAlignment: Text.AlignVCenter
+                                    }
+
                                     background: Rectangle {
                                         radius: Theme.radiusPill
                                         color: hovered ? Qt.rgba(1, 1, 1, 0.62) : "transparent"
