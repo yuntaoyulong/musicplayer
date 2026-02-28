@@ -42,6 +42,20 @@ cmake --build build
 ./build/mistplayer
 ```
 
+
+## 使用 makepkg -sfci 一步安装（推荐 Arch）
+
+在项目根目录执行：
+
+```bash
+makepkg -sfci
+```
+
+说明：
+
+- 当前 `PKGBUILD` 已改为从**当前目录本地 Git 源**打包（`git+file://$startdir`），因此可以直接在本仓库里 `makepkg -sfci`。
+- `-s` 自动安装缺失依赖；`-f` 强制重打包；`-c` 构建后清理；`-i` 构建成功后安装。
+
 ## Wayland / Hyprland 建议
 
 - 在 Hyprland 中为该窗口启用 blur（按你的 hyprland.conf 规则）。
