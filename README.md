@@ -26,7 +26,7 @@ MistPlayer 是一个为 Arch Linux / Wayland / Hyprland 设计的本地媒体播
 ## Arch Linux 依赖安装（pacman）
 
 ```bash
-sudo pacman -S --needed base-devel cmake ninja gcc qt6-base qt6-declarative qt6-multimedia qt6-tools
+sudo pacman -S --needed base-devel cmake ninja gcc qt6-base qt6-declarative qt6-multimedia qt6-wayland qt6-svg qt6-tools
 ```
 
 ## 构建
